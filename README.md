@@ -81,10 +81,27 @@ An Airline’s Operations Control Center has the difficult task of not only keep
 
 ## Class Diagram
 
-insert image here
+![image](https://user-images.githubusercontent.com/82166772/218315571-5186acbb-456b-4e46-b3a8-5a15de6fc77a.png)
+
+![image](https://user-images.githubusercontent.com/82166772/218315576-01682ff5-c469-4630-bc6f-886326e44923.png)
+
+![image](https://user-images.githubusercontent.com/82166772/218315587-b6e25953-0b9d-43dd-9c9c-2703ceb554f2.png)
+
+![image](https://user-images.githubusercontent.com/82166772/218315595-dcdeece0-089e-4b38-8dd6-90e1342570e7.png)
 
 ### Class Diagram Description
-insert class diagram description here
+**FleetTrackerMainPage class:** contains the architecture for the UI on the website  
+
+**UI Class:** includes an overview for the flight status. The class also has three methods for getting the flights, delayed flights, and airline.  
+
+**Fleet Overview Class:**  displays the fleet status and allows for flights to be added and removed  
+
+**com.fleettracker.service Package:** has the FleettrackerDAO interface and two subclasses, AircraftTracker and FleetTrackerDAO. These two classes connect to the IEventAirlineDAO and FleetTrackerDAO interfaces.  
+
+**airlineDAO class:** has two variables for getting the airline id and airline name. Also has two methods which are for getting the airline id and airline name  
+
+**AircraftDAO class:** contains ID, name, aircraft registration, location, sub-contract service, sub fleet and carrier ID variables Also has 6 methods for getting airline name, registration service availability.
+
 
 ## Trello.com (scrumy.com doesn't exist anymore) link:  
 https://trello.com/b/gv4Ihu1U/fleet-tracker
