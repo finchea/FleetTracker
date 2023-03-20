@@ -22,6 +22,11 @@ public class FleetTrackerController {
 		return "start";
 	}
 	
+	@RequestMapping(value="/AircraftStatus", method=RequestMethod.GET)
+	public String AircraftStatus(Model model) {
+		return "AircraftStatus";
+	}
+	
 	
 
 }
