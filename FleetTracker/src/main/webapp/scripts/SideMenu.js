@@ -2,7 +2,6 @@ $(document).ready(function(){
     // Requires jQuery
 
 $(document).on('click','.js-menu_toggle.closed',function(e){
-	console.log("button click");
 	e.preventDefault(); $('.list_load, .list_item').stop();
 	$(this).removeClass('closed').addClass('opened');
 
@@ -34,5 +33,5 @@ $(document).on('click','.js-menu_toggle.opened',function(e){
 		'margin-left':'-20px'
 	});
 	$('.list_load').slideUp(300);
-});   
+});    
 });
