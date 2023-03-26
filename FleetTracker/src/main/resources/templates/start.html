@@ -39,15 +39,18 @@
 	</div>
 	<br>
   
-    
-  <div class="card text-white bg-dark mb-3" style="width: 18rem;">
-	  <img class="card-img-top" src="images/redAircraft.png" alt="aircraft status image">
+  <div class="cardLayout">  
+  <div th:each="aircraftDTO: ${outOfServiceAircraft}" class="card text-white bg-dark mb-3" style="width: 18rem;">
+	  <img th:if="${aircraftDTO.backInService}" class="card-img-top" src="images/GreenAircraft.png" alt="aircraft status image">
+	  <img th:unless="${aircraftDTO.backInService}" class="card-img-top" src="images/redAircraft.png" alt="aircraft status image">
 	  <div class="card-body">
 	    <h5 class="card-title"  th:text="${aircraftDTO.tailNumber}"></h5>
 	    <p class="card-text" th:text="${aircraftDTO.reason}"></p>
 	    <p class="card-text" th:text="${aircraftDTO.remark}"></p>
+	    <p class="card-text" th:text="${aircraftDTO.NextUpdate}"></p>
 	  </div>	    
 	</div>
+  </div>
     
     
     

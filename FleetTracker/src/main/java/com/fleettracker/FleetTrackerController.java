@@ -1,5 +1,7 @@
 package com.fleettracker;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -17,8 +19,8 @@ public class FleetTrackerController {
 	
 	@RequestMapping(value="/start", method=RequestMethod.GET)
 	public String read(Model model) {
-		AircraftDTO aircraftDTO = aircraftServiceStub.fetchById(12);
-		model.addAttribute("aircraftDTO", aircraftDTO);
+		List<AircraftDTO> outOfServiceAircraft = aircraftServiceStub.GetOutofServiceAircraft();
+		model.addAttribute("outOfServiceAircraft", outOfServiceAircraft);
 		return "start";
 	}
 	
