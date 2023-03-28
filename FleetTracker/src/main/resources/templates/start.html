@@ -22,7 +22,7 @@
       </div>
     </div> 
     <div class="logo_background">
-      <img src="images/AirlineLogoCopy.jpg" alt="DHL Logo" class="logo">
+      <img src="images/AirlineLogoCopy.jpg" alt="Airline Logo" class="logo">
     </div>
     
     <div class="px-5">
@@ -39,16 +39,20 @@
 	</div>
 	<br>
   
-  <div class="cardLayout">  
-  <div th:each="aircraftDTO: ${outOfServiceAircraft}" class="card text-white bg-dark mb-3" style="width: 18rem;">
-	  <img th:if="${aircraftDTO.backInService}" class="card-img-top" src="images/GreenAircraft.png" alt="aircraft status image">
-	  <img th:unless="${aircraftDTO.backInService}" class="card-img-top" src="images/redAircraft.png" alt="aircraft status image">
-	  <div class="card-body">
-	    <h5 class="card-title"  th:text="${aircraftDTO.tailNumber}"></h5>
-	    <p class="card-text" th:text="${aircraftDTO.reason}"></p>
-	    <p class="card-text" th:text="${aircraftDTO.remark}"></p>
-	    <p class="card-text" th:text="${aircraftDTO.NextUpdate}"></p>
-	  </div>	    
+  <div class="container"> 
+  	<div class="row">  		
+		  	<div class="col-4" th:each="aircraftDTO: ${outOfServiceAircraft}">
+		  	<div class="card text-white bg-dark mb-3">
+			  <img th:if="${aircraftDTO.backInService}" class="card-img-top" src="images/GreenAircraft.png" alt="aircraft status image">
+			  <img th:unless="${aircraftDTO.backInService}" class="card-img-top" src="images/redAircraft.png" alt="aircraft status image">
+			  <div class="card-body">
+			    <h5 class="card-title"  th:text="${aircraftDTO.tailNumber}"></h5>
+			    <p class="card-text" th:text="${aircraftDTO.reason}"></p>
+			    <p class="card-text" th:text="${aircraftDTO.remark}"></p>
+			    <p class="card-text" th:text="${aircraftDTO.NextUpdate}"></p>
+			</div>
+			</div>				
+	</div>
 	</div>
   </div>
     
