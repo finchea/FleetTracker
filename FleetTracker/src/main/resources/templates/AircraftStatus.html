@@ -36,28 +36,29 @@
       <h2 class="AOSText">ABC Fleet Status: </h2>
       <h5 class="formTitle">Add MX/AOG/Damage Event:</h5>
 
+      <form action="#" th:action="@{/SubmitEvent}" method="post" th:object="${aircraftDTO}">
       <div class="row" id="addAircraftForm">        
           <div class="col">
-            <select class="form-select lg-mb-3" id="inlineFormCustomSelect">
-              <option selected>Select Tail...</option>
-              <option value="1">650GT</option>
-              <option value="2">651GT</option>
-              <option value="3">797AX</option>
+            <select class="form-select lg-mb-3" id="inlineFormCustomSelect" th:field="*{tailNumber}">
+              <option th:value="0" selected>Select Tail...</option>
+              <option th:value="650GT">650GT</option>
+              <option th:value="651GT">651GT</option>
+              <option th:value="797AX">797AX</option>
             </select>
           </div>          
           <div class="col">
-              <select class="form-select lg-mb-3" id="inlineFormCustomSelect">
-                <option selected>Reason...</option>
-                <option value="1">Maintenance</option>
-                <option value="2">AOG</option>
-                <option value="3">DAMAGE</option>
+              <select class="form-select lg-mb-3" id="inlineFormCustomSelect" th:field="*{reason}">
+                <option th:value="0" selected>Reason...</option>
+                <option th:value="Maintenance">Maintenance</option>
+                <option th:value="AOG">AOG</option>
+                <option th:value="DAMAGE">DAMAGE</option>
               </select>
           </div> 
           <div class="col">
-            <input type="text" class="form-control" placeholder="Next Update" aria-label="Next Update">
+            <input type="text" class="form-control" placeholder="Next Update" aria-label="Next Update" th:field="*{nextUpdate}">
           </div>  
           <div class="col">
-            <input type="text" class="form-control" placeholder="Remark" aria-label="Remark">
+            <input type="text" class="form-control" placeholder="Remark" aria-label="Remark" th:field="*{remark}">
           </div>            
           <div class="col">
             <button type="submit" class="btn btn-primary">Submit</button>
@@ -70,6 +71,7 @@
             <button type="submit" class="btn btn-primary">Remove Tail</button>
           </div>     
       </div>
+      </form>
 
       <div class="modal fade" id="addTailModal" tabindex="-1" aria-labelledby="modal-title" aria-hidden="true">
         <div class="modal-dialog">
@@ -102,33 +104,18 @@
           </tr>
         </thead>
         <tbody id="tableStyle">
-          <tr class="text-white bg-dark">
-            <td><img src="images/SmallRedAircraft.png" alt="Small Red Aircraft"></td>
-            <td>N651GT</td>
-            <td>AOG</td>
-            <td>1600z</td>
-            <td>Pitot Heat Inop</td>
+          <tr class="text-white bg-dark" th:each="aircraftDTO: ${outOfServiceAircraft}">
+			<td>
+	          	<img th:if="${aircraftDTO.backInService}" src="images/SmallGreenAircraft.png" alt="aircraft status image">
+				<img th:unless="${aircraftDTO.backInService}" src="images/SmallRedAircraft.png" alt="aircraft status image">
+			</td>            
+            <td th:text="${aircraftDTO.tailNumber}"></td>
+            <td th:text="${aircraftDTO.reason}"></td>
+            <td th:text="${aircraftDTO.nextUpdate}"></td>
+            <td th:text="${aircraftDTO.remark}"></td>
             <td><input type="checkbox" id="isFixed" name="isFixed" value="false"></td>
             <td>23 Min</td>
-          </tr>
-          <tr class="text-white bg-dark">
-            <td><img src="images/SmallGreenAircraft.png" alt="Small Red Aircraft"></td>
-              <td>N650GT</td>
-              <td>DAMAGED</td>
-              <td>1600z</td>
-              <td>K-Loader Strike</td>
-              <td><input type="checkbox" id="isFixed" name="isFixed" value="false"></td>
-              <td>23 Min</td>
-          </tr>
-          <tr class="text-white bg-dark">
-            <td><img src="images/SmallRedAircraft.png" alt="Small Red Aircraft"></td>
-              <td>N651GT</td>
-              <td>AOG</td>
-              <td>1600z</td>
-              <td>Pitot Heat Inop</td>
-              <td><input type="checkbox" id="isFixed" name="isFixed" value="false"></td>
-              <td>190 Min</td>
-          </tr>
+          </tr>          
         </tbody>
       </table>    
       

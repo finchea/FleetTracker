@@ -10,22 +10,10 @@ import com.fleettracker.dto.AircraftDTO;
 @Component
 public class AircraftServiceStub {
 	
-	public AircraftDTO fetchById(int id) {
-		AircraftDTO aircraftDTO = new AircraftDTO();
-		aircraftDTO.setAircraftId(12);
-		aircraftDTO.setTailNumber("N767AX");
-		aircraftDTO.setReason("DAMAGED");
-		aircraftDTO.setRemark("Bird strike to the #1 engine");
-		aircraftDTO.setNextUpdate("13:21z");
-		return aircraftDTO;
-	}
+	private List<AircraftDTO> outOfServiceAircraft;
 	
-	public void save(AircraftDTO aircraftDTO) {
-		
-	}
-	
-	public List<AircraftDTO> GetOutofServiceAircraft() {
-		List<AircraftDTO> outOfServiceAircraft = new ArrayList<AircraftDTO>();
+	public AircraftServiceStub() {
+		outOfServiceAircraft = new ArrayList<AircraftDTO>();
 		
 		AircraftDTO aircraftDTO = new AircraftDTO();
 		aircraftDTO.setAircraftId(12);
@@ -42,9 +30,28 @@ public class AircraftServiceStub {
 		aircraftDTO2.setNextUpdate("15:00z");
 		aircraftDTO2.setBackInService(true);
 		
+		AircraftDTO aircraftDTO3 = new AircraftDTO();
+		aircraftDTO3.setAircraftId(10);
+		aircraftDTO3.setTailNumber("N762CK");
+		aircraftDTO3.setReason("AOG");
+		aircraftDTO3.setRemark("Awaiting replacement FMC and required engineering order from Boeing");
+		aircraftDTO3.setNextUpdate("21:00z");
+		
 		outOfServiceAircraft.add(aircraftDTO);
 		outOfServiceAircraft.add(aircraftDTO2);
+		outOfServiceAircraft.add(aircraftDTO3);
+	}
+	
+	public AircraftDTO fetchById(int id) {
 		
+		return outOfServiceAircraft.get(0);
+	}
+	
+	public void save(AircraftDTO aircraftDTO) {
+		outOfServiceAircraft.add(aircraftDTO);
+	}
+	
+	public List<AircraftDTO> getOutofServiceAircraft() {
 		return outOfServiceAircraft;
 		
 	}
