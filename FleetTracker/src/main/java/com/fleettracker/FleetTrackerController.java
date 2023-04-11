@@ -19,6 +19,13 @@ public class FleetTrackerController {
 	@Autowired
 	private AircraftServiceStub aircraftServiceStub;
 	
+	@RequestMapping(value="/", method=RequestMethod.GET)
+	public String index(Model model) {
+		List<AircraftDTO> outOfServiceAircraft = aircraftServiceStub.getOutofServiceAircraft();
+		model.addAttribute("outOfServiceAircraft", outOfServiceAircraft);
+		return "start";
+	}
+	
 	@RequestMapping(value="/start", method=RequestMethod.GET)
 	public String read(Model model) {
 		List<AircraftDTO> outOfServiceAircraft = aircraftServiceStub.getOutofServiceAircraft();
