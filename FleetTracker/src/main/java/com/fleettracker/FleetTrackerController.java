@@ -3,6 +3,7 @@ package com.fleettracker;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -18,6 +19,8 @@ public class FleetTrackerController {
 	
 	@Autowired
 	private AircraftServiceStub aircraftServiceStub;
+	
+	
 	
 	@RequestMapping(value="/start", method=RequestMethod.GET)
 	public String read(Model model) {

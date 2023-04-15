@@ -1,7 +1,16 @@
 package com.fleettracker.dto;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
 
+import org.springframework.stereotype.Component;
+
+@Entity
 public class AircraftDTO {
 	
+	@Id
+	@GeneratedValue(strategy=GenerationType.AUTO)
 	private int aircraftId;
 	private String status;
 	private String tailNumber;

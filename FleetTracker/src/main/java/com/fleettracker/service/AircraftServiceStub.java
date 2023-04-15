@@ -3,14 +3,21 @@ package com.fleettracker.service;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
+import com.FleetTracker2.dao.AirCraftDAO;
 import com.fleettracker.dto.AircraftDTO;
 
 @Component
-public class AircraftServiceStub {
+@Service
+public class AircraftServiceStub   {
 	
 	private List<AircraftDTO> outOfServiceAircraft;
+	
+    @Autowired
+	AirCraftDAO aircraftDAO;
 	
 	public AircraftServiceStub() {
 		outOfServiceAircraft = new ArrayList<AircraftDTO>();
